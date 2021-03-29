@@ -12,9 +12,9 @@
 </head>
 
 <body>
-
+<!--os motores de busca do google não conseguem ler uma imagem, mas eles leem o alt-->
     <header id="logo">
-        <h1>Controle de Gastos</h1>
+        <img src="./assets/logo.svg" alt="Logo: dev.finance">
     </header>
 
     <main class="container">
@@ -23,22 +23,40 @@
         <section id="balance">
 
 
-            <h2>Balanço</h2>
+            <h2 class="sr-only" >Balanço</h2>
 
             <div class="card">
                 <!--o class pode ser usado para mais de um só.-->
-                <h3>Entradas</h3>
-                <p>RS 5.000,00</p>
+                <h3>
+                    <span> Entradas </span> <!--mantém o elemento em linha-->
+                    <p>                    
+                        <img src="./assets/income.svg" alt="imagem de entradas">
+                    </p>
+                </h3>
+                <p id="incomeDisplay" ></p>
             </div>
 
             <div class="card">
-                <h3>Saídas</h3>
-                <p>RS 2.000,00</p>
+                <h3>
+                    <span> Saídas </span> <!--mantém o elemento em linha-->
+                    <p>                    
+                        <img src="./assets/expense.svg" alt="imagem de saídas">
+                    </p>
+
+                </h3>
+                <p id="expenseDisplay" ></p>
             </div>
 
             <div class="card total">
-                <h3>Total</h3>
-                <p>RS 3.000,00</p>
+                <h3>
+
+                    <span> Total </span> <!--mantém o elemento em linha-->
+                    <p>                    
+                        <img src="./assets/total.svg" alt="imagem do total">
+                    </p>
+            
+                </h3>
+                <p id="totalDisplay" ></p>
             </div>
 
 
@@ -52,7 +70,9 @@
 
         <section id="transaction">
 
-            <h2>Transações</h2>
+            <h2 class="sr-only" >Transações</h2>
+
+            <a href="#" class="button new"  onclick="Modal.open()">+ Nova Transação</a> <!--executa a funcionalidade-->
 
             <table id="data-table">
                 <!--tabela-->
@@ -74,30 +94,15 @@
                             <!--conteúdo--> Data
                         </th>
 
+                        <th>
+                        </th>
+
                     </tr>
 
                 </thead>
 
                 <tbody>
-
-                    <tr>
-                        <td class="description">Luz</td>
-                        <td class="expense">- RS 500,00</td>
-                        <td class="date">23/01/2021</td>
-                    </tr>
-
-                    <tr>
-                        <td class="description">Criação website</td>
-                        <td class="income">RS 5000,00</td>
-                        <td class="date">23/01/2021</td>
-                    </tr>
-
-                    <tr>
-                        <td class="description">Internet</td>
-                        <td class="expense">- RS 200,00</td>
-                        <td class="date">23/01/2021</td>
-                    </tr>
-
+                            <!--deletei tudo mesmo talkey!-->
                 </tbody>
 
 
@@ -111,13 +116,90 @@
 
     </main>
 
+    <div class="modal-overlay"> <!--botão todo-->
+
+        <div class="modal"> <!--parte branca no meio-->
+
+            <div id="form">
+
+                <h2>Nova transação</h2>
+
+                <form action="" onsubmit= "Form.submit(event)" >
+
+                    <div class="input-group">
+
+                        <label  
+                            class="sr-only" 
+                            for="description"
+                            >Descrição
+                        </label> <!--vai ficar escondido com o sr-only-->
+                        
+                        <input 
+                            type="text" 
+                            id="description"   
+                            name="description"
+                            placeholder="Descrição"
+                        >  <!--vai ficar escondido essa palavra no botão-->
+                    </div>
+
+                    <div class="input-group">
+
+                        <label  
+                            class="sr-only" 
+                            for="amount"
+                            >Valor
+                        </label> <!--vai ficar escondido com o sr-only-->
+                        
+                        <input 
+                            type="number"
+                            step="0.01" 
+                            id="amount"   
+                            name="amount"
+                            placeholder="0"
+                        >  <!--vai ficar escondido essa palavra no botão-->
+                    
+                        <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
+                    </div>
+
+                    <div class="input-group">
+
+                        <label  
+                            class="sr-only" 
+                            for= "date"
+                            >Descrição
+                        </label> <!--vai ficar escondido com o sr-only-->
+                        
+                        <input 
+                            type="date" 
+                            id= "date"   
+                            name= "date"
+                        >  
+
+
+                    </div>
+
+                    <div class="input-group actions">
+
+                        <a href="#" class="button cancel" onclick="Modal.close()" >Cancelar</a>
+                        <button type="submit">Salvar</button>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
     <footer>
-        <p>FutureFunadation</p>
+
+        <p> <a href="http://futurefundation.github.io">FutureFundation</a> | Créditos: Rocketseat</p>
     </footer>
 
 
-
-
+    <script src="/scripts.js" ></script>
 
 
 
