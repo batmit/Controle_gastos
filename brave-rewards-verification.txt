@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: batmit.github.io
+Token: c63617aa9c197ff49c93e938d7389404e89b9bbe98e7d0aedbd2f1007b1916ea
